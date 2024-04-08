@@ -1,17 +1,16 @@
 #!/bin/bash
+set -x
 
-if [ ! -f "/tmp/db-created" ]; then
-    echo "Creating database"
+# If not created yet
+if [ ! -f "/code/tmp/db-created" ]; then
     rails db:create
     rails db:schema:load
-    echo "Migrating database"
     rails db:migrate
     rails r db/scripts/create_tags_path_view.rb
-    echo "Creating community"
     rails r docker/create_admin_and_community.rb
     echo "Seeding database"
     UPDATE_POSTS=true rails db:seed
-    touch /tmp/db-created
+    touch /code/tmp/db-created
 fi
 
 # If this isn't done again, there is a 500 error on the first page about posts
