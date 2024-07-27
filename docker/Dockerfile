@@ -27,8 +27,7 @@ RUN gem install bundler -v 2.4.22 && \
     bundle install
 
 COPY . /code
-RUN bundle exec rails assets:precompile && \
-    chmod -R 0777 /code
+RUN chmod -R 0777 /code
 
 EXPOSE 80 443 3000
 ENTRYPOINT ["/bin/bash"]
