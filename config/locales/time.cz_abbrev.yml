@@ -1,0 +1,32 @@
+es_abbrev:
+  datetime:
+    distance_in_words:
+      x_seconds:
+        one: '1sek'
+        other: '%{count}sek'
+      less_than_x_minutes:
+        one: '<1min'
+        other: '<%{count}min'
+      x_minutes:
+        one: '1min'
+        other: '%{count}min'
+      about_x_hours:
+        one: '1hod'
+        other: '%{count}hod'
+      x_hours:
+        one: '1hod'
+        other: '%{count}hod'
+      x_days: '%{count}dní'
+      x_weeks:
+        one: '1t'
+        other: '%{count}t'
+      about_x_months:
+        one: '1měs'
+        other: '%{count}měs'
+      x_months:
+        one: '1měs'
+        other: '%{count}měs'
+      about_x_years: '%{count}rok'
+      almost_x_years: '%{count}let'
+      x_years: '%{count}let'
+      over_x_years: '%{count}let'

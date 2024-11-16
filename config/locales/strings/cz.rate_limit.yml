@@ -1,0 +1,10 @@
+en:
+  rate_limit:
+    new_user_posts: >
+      Můžete přidat pouze :count :level příspěvků denně. Jakmile se zvýší vaše hodnocení, zvýší se i váš limit.
+    posts: >
+      Můžete přidat pouze :count :level příspěvků denně.
+    new_user_suggested_edits: >
+      Můžete přidat pouze :count :level komentářů denně. Jakmile se zvýší vaše hodnocení, zvýší se i váš limit.
+    suggested_edits: >
+      Můžete přidat pouze :count :level komentářů denně.  Jakmile se zvýší vaše hodnocení, budete moc upravovat bez schvalování.

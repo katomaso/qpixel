@@ -1,0 +1,28 @@
+en:
+  g:
+    # Alphabetical order please!
+    age: 'věk'
+    at: 'z'
+    body: 'text'
+    cancel: 'zrušit'
+    codidact_network: 'Codidact síť'
+    comment: 'komentář'
+    community: 'komunita'
+    created: 'vytvořeno'
+    error: 'chyba'
+    event: 'událost'
+    log: 'log'
+    logged: 'zalogováno'
+    name: 'jméno'
+    privilege: 'práva'
+    related: 'související'
+    reputation: 'reputace'
+    search: 'vyhledat'
+    send: 'odeslat'
+    subject: 'předmět'
+    threshold: 'hranice'
+    type: 'typ'
+    user: 'uživatel'
+
+  platform:
+    network_name: 'Codidact síť'
