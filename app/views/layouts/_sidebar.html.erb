@@ -104,6 +104,7 @@
     <% end %>
   <% end %>
 
+  <% if SiteSetting['DonationsEnabled'] %>
   <div class="widget has-margin-4">
     <div class="widget--header">
       <img src="/assets/codidact.png" alt="Codidact logo" class="codidact-logo" />
@@ -124,11 +125,10 @@
           Want to advertise this community? <%= link_to 'Use our templates!', ads_path %>
         </p>
       <% end %>
-      <% if SiteSetting['DonationsEnabled'] %>
         <p>
           Like what we're doing? Support us! <%= link_to 'Donate', donate_path, class: 'button is-green is-filled' %>
         </p>
-      <% end %>
     </div>
   </div>
+  <% end %>
 </div>

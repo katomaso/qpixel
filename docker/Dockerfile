@@ -25,12 +25,11 @@ RUN apt-get update && \
 # Add core code to container
 WORKDIR /code
 COPY Gemfile Gemfile.lock /code/
-RUN gem install bundler -v 2.4.22 && \
-    bundle install
+
+RUN gem install bundler:2.4.22 && bundle install
 
 COPY . /code
-RUN bundle exec rails assets:precompile && \
-    chmod -R 0777 /code
+RUN chmod -R 0777 /code
 
 EXPOSE 80 443 3000
 ENTRYPOINT ["/bin/bash"]
