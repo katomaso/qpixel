@@ -1,4 +1,4 @@
-class CreateFlagStatuses < ActiveRecord::Migration
+class CreateFlagStatuses < ActiveRecord::Migration[5.0]
   def change
     create_table :flag_statuses do |t|
       t.string :result

@@ -1,4 +1,4 @@
-class CreatePostHistories < ActiveRecord::Migration
+class CreatePostHistories < ActiveRecord::Migration[5.0]
   def change
     create_table :post_histories do |t|
       t.references :post_history_type, index: true, foreign_key: true

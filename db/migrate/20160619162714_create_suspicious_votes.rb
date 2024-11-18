@@ -1,4 +1,4 @@
-class CreateSuspiciousVotes < ActiveRecord::Migration
+class CreateSuspiciousVotes < ActiveRecord::Migration[5.0]
   def change
     create_table :suspicious_votes do |t|
       t.integer :from_user

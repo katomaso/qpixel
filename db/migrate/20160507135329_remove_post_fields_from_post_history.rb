@@ -1,4 +1,4 @@
-class RemovePostFieldsFromPostHistory < ActiveRecord::Migration
+class RemovePostFieldsFromPostHistory < ActiveRecord::Migration[5.0]
   def change
     remove_column :post_histories, :title, :string
     remove_column :post_histories, :body, :string

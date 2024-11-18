@@ -1,4 +1,4 @@
-class AddUserToNotifications < ActiveRecord::Migration
+class AddUserToNotifications < ActiveRecord::Migration[5.0]
   def change
     add_reference :notifications, :user, index: true, foreign_key: true
   end
