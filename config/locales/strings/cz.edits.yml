@@ -1,0 +1,6 @@
+cz:
+  edits:
+    # validation error messages
+    max_edit_comment_length:
+      one: Úprava komentáře nesmí být delší než 1 znak.
+      other: Úprava komentáře nesmí být delší než :length znaků.

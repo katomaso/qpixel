@@ -1,0 +1,72 @@
+en:
+  posts:
+    #alert/notice
+    category_low_trust_level: >
+      Nemáte dostatečnou reputaci pro přispívání do kategorie :name.
+    type_requires_category: >
+      Nemůžete vytvořit :type bez kategorie.
+    type_requires_parent: >
+      Nemůžete vytvořit :type bez nadřazeného příspěvku.
+    not_public_editable: >
+      Tento typ příspěvku může být editován pouze autorem nebo moderátory.
+    cant_close_post: >
+      Nedaří se uzavřít tuto otázku. Zkuste to později.
+    already_opened: >
+      Nelze znovu otevřít příspěvek.
+    cant_reopen_post: >
+      Nedaří se otevřít příspěvek. Zkuste to později.
+    no_edit_changes: >
+      Nic se neuložilo, protože jste neprovedl žádné změny.
+    post_has_been_featured: >
+      Příspěvek byl zvýrazněn. Může chvíli trvat, než se změna projeví.
+    cant_delete_post: >
+      Nedaří se smazat příspěvek. Zkuste to později.
+    already_deleted: >
+      Nelze smazat příspěvek.
+    cant_delete_responded: >
+      Nelze smazat příspěvek s odpověďmi.
+    cant_restore_post: >
+      Nedaří se obnovit příspěvek. Zkuste to později.
+    cant_restore_undeleted: >
+      Nelze obnovit příspěvek nesmazaný příspěvek.
+    cant_restore_deleted_by_moderator: >
+      Nelze obnovit příspěvek smazaný moderátorem.
+    cant_change_category: >
+      Nemáte dostatečná práva.
+    type_not_included: >
+      Tento příspěvek není povolený v kategorii :type.
+    #_form.html.erb
+    body_label: >
+      Obsah
+    post_title_label: >
+      Dejte příspěvku trefný nadpis:
+    tags_label: >
+      Tagy (alespoň jeden):
+    required_tags_caption: >
+      Je potřeba alespoň jeden z
+    edit_comment_label: >
+      Upravit komentář
+    redact_label: >
+      Redigovat
+    redact_explanation: >
+      Redigovat originál skrytím historie? Pouze pro zakrytí citlivých údajů
+    licence_label: >
+      Licence
+    unsaved_changes_confirmation: >
+      Neuložené změny budou ztraceny. Pokrařovat?
+    category_label: >
+      Kategorie
+    category_caption: >
+      Název kategorie pod kterou bude zobrazen příspěvek v nápovědě.
+    order_label: >
+      Pořadí
+    order_caption: >
+      Nastavte pořadí zobrazení v nápovědě. Vyšší hodnoty znamenají pozdější pozici.
+    slug_label: >
+      URL slug
+    slug_caption: >
+      V URL "https://vasestranka.codidact.com/help/slug", bude "slug" nahrazen vaším slovem.
+    responding_to: >
+      Odpovědět:
+    no_block_mathjax_title: >
+      Nadpis nemůže obsahovat MathJax.
