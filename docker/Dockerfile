@@ -1,55 +1,38 @@
-FROM ruby:3.1.2-bullseye AS ruby
-FROM node:12.18.3-slim AS node
+FROM ruby:3.1.0
 
-FROM ruby AS build
+# docker build -f docker/Dockerfile -t qpixel_uwsgi .
 
-# Set all encoding to UTF-8
 ENV RUBYOPT="-KU -E utf-8:utf-8"
 
 # Install additional dependencies not present in the base image
 RUN apt-get update && \
-    apt-get install -y bison \
-    build-essential \
-    libxslt-dev \
-    default-mysql-server
+    apt-get install -y gcc && \
+    apt-get install -y make && \
+    apt-get install -y \
+        default-libmysqlclient-dev \
+        autoconf \
+        bison \
+        build-essential \
+        libssl-dev \
+        libyaml-dev \
+        libreadline-dev \
+        zlib1g-dev \
+        libncurses5-dev \
+        libffi-dev \
+        libgdbm-dev \
+        nodejs \
+        node-imagemagick \
+        imagemagick
 
 # Add core code to container
 WORKDIR /code
+COPY Gemfile Gemfile.lock /code/
+
+RUN gem install bundler:2.4.22 && bundle install
+
 COPY . /code
-
-RUN gem install bundler:2.4.13
-RUN bundle install
-
-# cherry pick only what we really need to run Node.js
-COPY --from=node /usr/local/bin/node /usr/local/bin
-COPY --from=node /usr/local/bin/nodejs /usr/local/bin
-COPY --from=node /usr/local/bin/npm /usr/local/bin
-COPY --from=node /usr/local/bin/npx /usr/local/bin
-COPY --from=node /usr/local/bin/yarn /usr/local/bin
-COPY --from=node /usr/local/bin/yarnpkg /usr/local/bin
-COPY --from=node /usr/local/include/node /usr/local/include
-COPY --from=node /usr/local/lib/node_modules /usr/local/lib
-COPY --from=node /usr/local/share/doc/node /usr/local/share/doc
-COPY --from=node /usr/local/share/man/man1/node.1 /usr/local/share/man/man1
-COPY --from=node /usr/local/share/systemtap/tapset/node.stp /usr/local/share/systemtap/tapset
-COPY --from=node /opt/yarn-v1.22.4 /opt/yarn-v1.22.4
-
-FROM build
-
-# setup a dedicated user for Node.js
-RUN groupadd --gid 1000 node 
-RUN useradd --uid 1000 \
-            --gid node \
-            --shell /bin/bash \
-            --create-home node
-
-# setup Node.js environment
-ENV NODEJS_HOME=/opt/node-v12.18.3-linux-x64/bin
-ENV PATH=$NODEJS_HOME:$PATH
-
-WORKDIR /code
+RUN chmod -R 0777 /code
 
 EXPOSE 80 443 3000
 ENTRYPOINT ["/bin/bash"]
 CMD ["/code/docker/entrypoint.sh"]
-

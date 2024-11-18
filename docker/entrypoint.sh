@@ -1,21 +1,34 @@
 #!/bin/bash
+set -ex
 
-# If not created yet
-if [ ! -f "/db-created" ]; then
+if [ ! -f "/code/config/db-created" ]; then
+    echo "Creating database"
     rails db:create
     rails db:schema:load
-    rails r db/scripts/create_tags_path_view.rb
+    echo "Migrating database"
     rails db:migrate
-    rails db:migrate RAILS_ENV=development
+    rails r db/scripts/create_tags_path_view.rb
     rails r docker/create_admin_and_community.rb
+    echo "Seeding database"
     UPDATE_POSTS=true rails db:seed
-    touch /db-created
+    touch /code/config/db-created
+else
+    echo "Migrating database"
+    rails db:migrate
+
+    # I think we should not seed multiple times
+    # If this isn't done again, there is a 500 error on the first page about posts
+    # echo "Seeding database"
+    # rails db:seed
 fi
 
-# If this isn't done again, there is a 500 error on the first page about posts
-rails db:seed
+if [ ! -f "public/assets/*.css" ]; then
+    bundle exec rails assets:precompile
+fi
 
 # we don't start the server immediately in dev mode
 if [[ "$1" != 'dev' ]]; then
+    # defaults to port 3000
+    echo "Starting server 0.0.0.0:3000"
     rails server -b 0.0.0.0
 fi
