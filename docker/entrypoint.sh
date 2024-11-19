@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ex
+set -x
 
 if [ ! -f "/code/config/db-created" ]; then
     echo "Creating database"
