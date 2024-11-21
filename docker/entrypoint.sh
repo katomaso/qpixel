@@ -4,11 +4,11 @@ set -x
 if [ ! -f "/code/config/db-created" ]; then
     echo "Creating database"
     rails db:create
-    rails db:schema:load
+    rails db:schema:load || true
     echo "Migrating database"
     rails db:migrate
-    rails r db/scripts/create_tags_path_view.rb
-    rails r docker/create_admin_and_community.rb
+    rails r db/scripts/create_tags_path_view.rb || true
+    rails r docker/create_admin_and_community.rb || true
     echo "Seeding database"
     UPDATE_POSTS=true rails db:seed
     touch /code/config/db-created
