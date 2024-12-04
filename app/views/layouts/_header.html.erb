@@ -42,7 +42,7 @@ $(() => {
         <%= link_to users_path, class: 'header--item', title: 'Open users list' do %>
           <i class="fas fa-fw fa-users"></i> Users
         <% end %>
-        <%= link_to search_path, class: 'header--item', 
+        <%= link_to search_path, class: 'header--item',
                                  data: { 'header-slide' => '#search-slide' },
                                  title: 'Show search' do %>
           <i class="fas fa-fw fa-search"></i> Search
@@ -52,7 +52,7 @@ $(() => {
       <% if user_signed_in? %>
         <% unless @community.is_fake %>
           <% if current_user.is_moderator %>
-            <%= link_to (@open_flags > 0) ? flag_queue_path : moderator_path, 
+            <%= link_to (@open_flags > 0) ? flag_queue_path : moderator_path,
                 class: 'header--item',
                 title: 'Open moderator dashboard' do %>
               <i class="fas fa-fw fa-wrench"></i> Mod
@@ -72,7 +72,7 @@ $(() => {
         <% end %>
       <% end %>
       <% if user_signed_in? %>
-        <a href="#" class="header--item inbox-toggle is-visible-on-mobile" 
+        <a href="#" class="header--item inbox-toggle is-visible-on-mobile"
                     data-header-slide="#js-inbox"
                     title='Open notifications'
                     >
@@ -88,9 +88,9 @@ $(() => {
           <span class="<%= SiteSetting['SiteHeaderIsDark'] ? 'has-color-white' : 'has-color-tertiary-600' %>"><%= current_user.reputation %></span>
         <% end %>
       <% end %>
-      <a href="#" 
-         class="header--item is-visible-on-mobile" 
-         aria-label="Show Communities" 
+      <a href="#"
+         class="header--item is-visible-on-mobile"
+         aria-label="Show Communities"
          data-header-slide="#communities-slide"
          title="Show Communities"
          >
@@ -128,7 +128,7 @@ $(() => {
       <%= link_to 'Sign Out', destroy_saml_user_session_path, method: :delete, class: 'button is-muted has-float-right', role: 'button' %>
     <% end %>
   <% end %>
-  <h3 class="h-m-t-1">Communities</h3>
+  <h3 class="h-m-t-1"><%= t('Communities')%></h3>
   <div class="community-header-list">
     <% logo_paths = SiteSetting.all_communities('SiteLogoPath') %>
     <% Community.where(hidden: false).each do |c| %>
@@ -208,7 +208,7 @@ $(() => {
 
     <div class='header-slide--separator'></div>
 
-    <%= link_to 'Help', help_center_path, class: 'menu--item' %>	
+    <%= link_to 'Help', help_center_path, class: 'menu--item' %>
 
     <%= link_to 'Dashboard', dashboard_path, class: 'menu--item' %>
 

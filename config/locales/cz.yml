@@ -21,3 +21,6 @@
 
 en:
   hello: "Ahoj světe"
+  "Sign Up": "Zaregistrovat se"
+  "Sign In": "Přihlásit se"
+  "You can also sign in with your Single Sign-On provider.": "Můžete se také přihlásit přes služby třetích stran"
