@@ -32,7 +32,7 @@ chmod +x docker/local-setup.sh
 docker/local-setup.sh
 ```
 
-Editing the `./.env` file will modify the corresponding variables used in the docker-compose.yml file but **NOT** the environment variables in the container. 
+Editing the `./.env` file will modify the corresponding variables used in the docker-compose.yml file but **NOT** the environment variables in the container.
 Editing the `./docker/env` file will change environment variables only in the running container.
 
 ### Custom build config
@@ -78,7 +78,7 @@ After about 20 seconds, check to make sure the server is running (and verify por
 
 ```
 qpixel_uwsgi_1  | => Booting Puma
-qpixel_uwsgi_1  | => Rails 7.0.4 application starting in development 
+qpixel_uwsgi_1  | => Rails 7.0.4 application starting in development
 qpixel_uwsgi_1  | => Run `rails server -h` for more startup options
 qpixel_uwsgi_1  | Puma starting in single mode...
 qpixel_uwsgi_1  | * Puma version: 5.6.5 (ruby 2.7.6-p219) ("Birdie's Version")
@@ -91,7 +91,7 @@ qpixel_uwsgi_1  | Use Ctrl-C to stop
 ```
 
 You should then be able to open your browser to [http://localhost:3000](http://localhost:3000)
-and see the interface. 
+and see the interface.
 
 ![img/interface.png](../img/interface.png)
 
@@ -121,7 +121,7 @@ Once you are logged in, you should see your icon in the top right:
 
 ## 6. Configure Categories
 
-Before you try to create a post we need to configure categories! 
+Before you try to create a post we need to configure categories!
 Go to `http://localhost:3000/categories/`
 
 ![img/categories.png](../img/categories.png)
@@ -154,6 +154,9 @@ That's it!
 ## 8. Accessing emails
 Running in this docker-compose setup, the system does not actually send emails. However, you can see the emails that would have been sent by going to [http://localhost:3000/letter_opener](http://localhost:3000/letter_opener).
 This is especially useful to confirm other accounts that you make in the container.
+
+Unless you use `RAILS_ENV=production` as your environment. Then a SMTP connection details are required
+in environment variables starting with SMTP_. See `env` file for details.
 
 ### 9. Running commands in the docker container
 Often, it may be useful to run some ruby/rails code directly, e.g. for debugging purposes. You can do so with the following command:
@@ -190,5 +193,5 @@ docker compose rm
 
 The current goal of this container is to provide a development environment for
 working on QPixel. This deployment has not been tested with email notifications
-enabled / set up, nor to deploy in production mode. If you require these 
+enabled / set up, nor to deploy in production mode. If you require these
 modifications, please [open an issue](https://github.com/codidact/qpixel/issues).

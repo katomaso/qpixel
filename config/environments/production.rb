@@ -92,11 +92,23 @@ Rails.application.configure do
   # require "syslog/logger"
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
-  config.action_mailer.delivery_method = :ses
-  config.action_mailer.default_url_options = { 
-    host: 'meta.codidact.com',
-    protocol: ENV['MAILER_PROTOCOL'] || 'https'
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              ENV['SMTP_HOST'],
+    port:                 Integer(ENV['SMTP_PORT'] || "587"),
+    domain:               ENV['SMTP_DOMAIN'],
+    user_name:            ENV['SMTP_USER_NAME'],
+    password:             ENV['SMTP_PASSWORD'],
+    authentication:       'plain',
+    enable_starttls_auto: true
   }
+
+  # Here is the original action_mailer setting - unfortunately not very configurable
+  # config.action_mailer.delivery_method = :ses
+  # config.action_mailer.default_url_options = {
+  #   host: 'meta.codidact.com',
+  #   protocol: ENV['MAILER_PROTOCOL'] || 'https'
+  # }
   config.action_mailer.asset_host = 'https://meta.codidact.com'
 
   # Do not dump schema after migrations.
