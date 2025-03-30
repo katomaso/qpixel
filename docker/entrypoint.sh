@@ -26,6 +26,11 @@ if [ ! -f "public/assets/*.css" ]; then
     bundle exec rails assets:precompile
 fi
 
+
+if [ -f '/code/tmp/pids/server.pid' ]; then
+    rm -rf /code/tmp/pids/server.pid
+fi
+
 # we don't start the server immediately in dev mode
 if [[ "$1" != 'dev' ]]; then
     # defaults to port 3000
